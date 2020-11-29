@@ -1,0 +1,21 @@
+# Instruções para execução:
+> Executar os comandos no mesmo diretório onde estão os arquivos da aplicação.
+
+
+    ## Passo 1 - Compilação:
+        ### Compilar todas as classes:
+            javac *.java
+        
+        ### Compilar a classe CalculadoraIMC com o comando 'rmic':
+            rmic CalculadoraIMC
+
+
+    ## Passo 2 - Execução:
+        ### Iniciar o aplicativo com o RMI:
+            rmiregistry
+        
+        ### Inciar o servidor:
+            java Servidor
+        
+        ### Iniciar o cliente:
+            java Cliente
