@@ -3,7 +3,6 @@ package br.edu.ufal.model;
 public class Garcom implements Runnable {
 	ListaPedidos lista;
 	int id;
-	boolean livre = true;
 	String nome;
 
 	public Garcom(ListaPedidos lista, String nome) {

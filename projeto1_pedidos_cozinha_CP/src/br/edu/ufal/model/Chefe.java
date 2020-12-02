@@ -2,7 +2,6 @@ package br.edu.ufal.model;
 
 public class Chefe implements Runnable {
 	ListaPedidos lista;
-	boolean livre = true;
 	String nome;
 
 	public Chefe(ListaPedidos lista, String nome) {
