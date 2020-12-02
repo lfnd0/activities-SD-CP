@@ -39,9 +39,8 @@ public class Chefe implements Runnable {
 							">[CHEFE] " + this.nome + " preparou o pedido: " + idPedido + ", nome: " + nomePedido);
 				} else {
 					soltandoLista();
-					System.out.println("Lista de pedidos vazia.\n");
+					System.out.println("Lista de pedidos vazia.");
 				}
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
