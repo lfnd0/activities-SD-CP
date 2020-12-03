@@ -6,26 +6,26 @@ import java.util.List;
 public class Pedido {
 	static int sequence = 1;
 	int id;
-	String nome;
+	String prato;
 	List<String> cardapio = Arrays.asList("Ravioli", "Canape", "Filet mignon", "Crepe", "Panacotta", "Mousse", "Vieira",
 			"Empanada", "Spaguetti");
 
-	private void darNome() {
+	private void nomearPrato() {
 		int n = (int) (Math.random() * cardapio.size());
-		this.nome = cardapio.get(n);
+		this.prato = cardapio.get(n);
 	}
 
 	public Pedido() {
-		darNome();
+		nomearPrato();
 		this.id = sequence++;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getPrato() {
+		return prato;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPrato(String prato) {
+		this.prato = prato;
 	}
 
 	public int getId() {
@@ -34,6 +34,6 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "(Pedido: " + this.id + "; Nome: " + this.nome + ")";
+		return "(N. " + this.id + "; " + this.prato + ")";
 	}
 }

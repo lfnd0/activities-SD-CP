@@ -8,11 +8,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ListaPedidos extends Thread {
 	List<Pedido> lista = new ArrayList<Pedido>();
-	Lock lock;
+	Lock aLock;
 
 	public ListaPedidos() {
 		this.lista = Collections.synchronizedList(lista);
-		this.lock = new ReentrantLock();
+		this.aLock = new ReentrantLock();
 	}
 
 	public Pedido getPedido() {
@@ -23,12 +23,12 @@ public class ListaPedidos extends Thread {
 		return lista;
 	}
 
-	public void pegaLista() {
-		lock.lock();
+	public void pegarLista() {
+		aLock.lock();
 	}
 
 	public void soltarLista() {
-		lock.unlock();
+		aLock.unlock();
 	}
 
 	public boolean adicionarPedidoNaLista(Pedido pedido) {
@@ -63,6 +63,6 @@ public class ListaPedidos extends Thread {
 
 	@Override
 	public String toString() {
-		return "Aguardando: " + this.lista;
+		return "" + this.lista;
 	}
 }

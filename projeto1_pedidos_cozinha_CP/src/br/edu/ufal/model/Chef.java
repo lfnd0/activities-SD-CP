@@ -1,20 +1,20 @@
 package br.edu.ufal.model;
 
-public class Chefe implements Runnable {
+public class Chef implements Runnable {
 	ListaPedidos lista;
 	String nome;
 
-	public Chefe(ListaPedidos lista, String nome) {
+	public Chef(ListaPedidos lista, String nome) {
 		this.lista = lista;
 		this.nome = nome;
 	}
 
 	public void pegandoLista() throws InterruptedException {
-		lista.pegaLista();
-		Thread.sleep(1000);
+		lista.pegarLista();
+		Thread.sleep(2000);
 	}
 
-	public void soltandoLista() throws InterruptedException {
+	public void soltandoLista() {
 		lista.soltarLista();
 	}
 
@@ -23,20 +23,24 @@ public class Chefe implements Runnable {
 		try {
 			while (true) {
 				pegandoLista();
+
 				if (!lista.listaVazia()) {
+					System.out.println(">[CHEF] Lista de pedidos: " + lista);
+
 					int idPedido = lista.getPedido().getId();
-					String nomePedido = lista.getPedido().getNome();
+
+					String prato = lista.getPedido().getPrato();
 
 					lista.removerPedidoDaLista();
 					soltandoLista();
 
 					System.out.println(
-							">[CHEFE] " + this.nome + " preparando o pedido: " + idPedido + ", nome: " + nomePedido);
+							">[CHEF] " + this.nome + " preparando o pedido: " + idPedido + ", prato: " + prato);
 
-					Thread.sleep(3000);
+					Thread.sleep((long) ((Math.random() * 3) + 2) * 1000);
 
-					System.out.println(
-							">[CHEFE] " + this.nome + " preparou o pedido: " + idPedido + ", nome: " + nomePedido);
+					System.out
+							.println(">[CHEF] " + this.nome + " preparou o pedido: " + idPedido + ", prato: " + prato);
 				} else {
 					soltandoLista();
 					System.out.println("Lista de pedidos vazia.");
@@ -44,6 +48,8 @@ public class Chefe implements Runnable {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			soltandoLista();
 		}
 	}
 }
