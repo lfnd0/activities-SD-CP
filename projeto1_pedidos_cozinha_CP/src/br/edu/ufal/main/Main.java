@@ -13,14 +13,14 @@ public class Main {
 		List<String> garcons = Arrays.asList("Gabriel", "Victor", "Willian");
 		List<String> chefs = Arrays.asList("Erick Jacquin", "Henrique Fogaca", "Paola Carosella");
 
-		ListaPedidos lista = new ListaPedidos();
+		ListaPedidos listaPedidos = new ListaPedidos();
 
 		for (String garcon : garcons) {
-			new Thread(new Garcon(lista, garcon)).start();
+			new Thread(new Garcon(listaPedidos, garcon)).start();
 		}
 
 		for (String chef : chefs) {
-			new Thread(new Chef(lista, chef)).start();
+			new Thread(new Chef(listaPedidos, chef)).start();
 		}
 	}
 }

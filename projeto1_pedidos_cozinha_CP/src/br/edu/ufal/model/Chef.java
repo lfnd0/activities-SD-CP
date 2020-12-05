@@ -9,9 +9,8 @@ public class Chef implements Runnable {
 		this.nome = nome;
 	}
 
-	public void pegandoLista() throws InterruptedException {
+	public void pegandoLista() {
 		lista.pegarLista();
-		Thread.sleep(2000);
 	}
 
 	public void soltandoLista() {
@@ -23,6 +22,7 @@ public class Chef implements Runnable {
 		try {
 			while (true) {
 				pegandoLista();
+//				Thread.sleep(1000);
 
 				if (!lista.listaVazia()) {
 					System.out.println(">[CHEF] Lista de pedidos: " + lista);
@@ -37,7 +37,7 @@ public class Chef implements Runnable {
 					System.out.println(
 							">[CHEF] " + this.nome + " preparando o pedido: " + idPedido + ", prato: " + prato);
 
-					Thread.sleep((long) ((Math.random() * 3) + 2) * 1000);
+					Thread.sleep((long) ((Math.random() * 2) + 4) * 1000);
 
 					System.out
 							.println(">[CHEF] " + this.nome + " preparou o pedido: " + idPedido + ", prato: " + prato);

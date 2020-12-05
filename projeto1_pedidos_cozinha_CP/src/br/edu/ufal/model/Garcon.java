@@ -10,9 +10,8 @@ public class Garcon implements Runnable {
 		this.nome = nome;
 	}
 
-	public void pegandoLista() throws InterruptedException {
+	public void pegandoLista() {
 		lista.pegarLista();
-		Thread.sleep(1000);
 	}
 
 	public void soltandoLista() {
@@ -24,6 +23,7 @@ public class Garcon implements Runnable {
 		try {
 			while (true) {
 				pegandoLista();
+				Thread.sleep(1000);
 
 				if (lista.listaCheia()) {
 					soltandoLista();
@@ -35,7 +35,7 @@ public class Garcon implements Runnable {
 					System.out.println(">[GARCON] " + this.nome + " anotando pedido: " + pedido.getId() + ", prato: "
 							+ pedido.getPrato());
 
-					Thread.sleep((long) ((Math.random() * 2) + 1) * 1000);
+					Thread.sleep((long) ((Math.random() * 2) + 2) * 1000);
 
 					soltandoLista();
 
