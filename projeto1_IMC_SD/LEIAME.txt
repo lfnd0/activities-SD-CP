@@ -1,5 +1,5 @@
 # Instruções para execução:
-> Executar os comandos no mesmo diretório onde estão os arquivos da aplicação.
+> Executar os comandos em um terminal, no mesmo diretório onde estão os arquivos da aplicação.
 
 
     ## Passo 1 - Compilação:
