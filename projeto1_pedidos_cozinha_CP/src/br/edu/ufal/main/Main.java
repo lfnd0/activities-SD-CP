@@ -10,7 +10,7 @@ import br.edu.ufal.model.ListaPedidos;
 public class Main {
 
 	public static void main(String[] args) {
-		List<String> garcons = Arrays.asList("Gabriel", "Victor", "Willian");
+		List<String> garcons = Arrays.asList("Andrew", "Victor", "Willian");
 		List<String> chefs = Arrays.asList("Erick Jacquin", "Henrique Fogaca", "Paola Carosella");
 
 		ListaPedidos listaPedidos = new ListaPedidos();

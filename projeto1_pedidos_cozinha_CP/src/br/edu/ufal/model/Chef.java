@@ -32,11 +32,10 @@ public class Chef implements Runnable {
 
 					listaPedidos.removerPedidoLista();
 
-					unlockListaChef();
-
 					System.out.println(
 							">[CHEF] " + this.nomeChef + " preparando o pedido: " + idPedido + ", prato: " + prato);
 
+					unlockListaChef();
 					Thread.sleep((long) ((Math.random() * 2) + 4) * 1000);
 
 					System.out.println(

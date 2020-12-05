@@ -35,7 +35,6 @@ public class Garcon implements Runnable {
 							+ ", prato: " + pedido.getPrato());
 
 					Thread.sleep((long) ((Math.random() * 2) + 2) * 1000);
-
 					unlockListaGarcon();
 
 					System.out.println(">[GARCON] " + this.nomeGarcon + " anotou pedido: " + pedido.getId()
