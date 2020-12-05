@@ -1,55 +1,55 @@
 package br.edu.ufal.model;
 
 public class Chef implements Runnable {
-	ListaPedidos lista;
-	String nome;
+	ListaPedidos listaPedidos;
+	String nomeChef;
 
 	public Chef(ListaPedidos lista, String nome) {
-		this.lista = lista;
-		this.nome = nome;
+		this.listaPedidos = lista;
+		this.nomeChef = nome;
 	}
 
-	public void pegandoLista() {
-		lista.pegarLista();
+	public void lockListaChef() throws InterruptedException {
+		listaPedidos.lockLista();
 	}
 
-	public void soltandoLista() {
-		lista.soltarLista();
+	public void unlockListaChef() {
+		listaPedidos.unlockLista();
 	}
 
 	@Override
 	public void run() {
 		try {
 			while (true) {
-				pegandoLista();
-//				Thread.sleep(1000);
+				lockListaChef();
 
-				if (!lista.listaVazia()) {
-					System.out.println(">[CHEF] Lista de pedidos: " + lista);
+				if (!listaPedidos.listaVazia()) {
+					System.out.println(">[CHEF] Lista de pedidos recebida: " + listaPedidos);
 
-					int idPedido = lista.getPedido().getId();
+					int idPedido = listaPedidos.getPedido().getId();
 
-					String prato = lista.getPedido().getPrato();
+					String prato = listaPedidos.getPedido().getPrato();
 
-					lista.removerPedidoDaLista();
-					soltandoLista();
+					listaPedidos.removerPedidoLista();
+
+					unlockListaChef();
 
 					System.out.println(
-							">[CHEF] " + this.nome + " preparando o pedido: " + idPedido + ", prato: " + prato);
+							">[CHEF] " + this.nomeChef + " preparando o pedido: " + idPedido + ", prato: " + prato);
 
 					Thread.sleep((long) ((Math.random() * 2) + 4) * 1000);
 
-					System.out
-							.println(">[CHEF] " + this.nome + " preparou o pedido: " + idPedido + ", prato: " + prato);
+					System.out.println(
+							">[CHEF] " + this.nomeChef + " preparou o pedido: " + idPedido + ", prato: " + prato);
 				} else {
-					soltandoLista();
+					unlockListaChef();
 					System.out.println("Lista de pedidos vazia.");
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			soltandoLista();
+			unlockListaChef();
 		}
 	}
 }

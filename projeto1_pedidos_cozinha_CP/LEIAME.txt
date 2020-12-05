@@ -5,3 +5,8 @@
 A ordem de chegada dos pedidos precisa ser respeitada. São vários garçons e vários cozinheiros (mínimo de 3 cada).
 Os garçons "escrevem" o pedido na fila única (tamanho 5) e os cozinheiros "pegam" o pedido. Dois cozinheiros não podem pegar o mesmo pedido.
 Um garçon não pode sobreescrever o pedido que ainda não foi pego por um cozinheiro. Os cozinheiros gastam mais tempo que os garçons em suas atividades.
+
+
+# Equipe:
+    Danillo Rodrigues Abreu
+    Luiz Fernando da Silva

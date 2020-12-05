@@ -1,53 +1,51 @@
 package br.edu.ufal.model;
 
 public class Garcon implements Runnable {
-	ListaPedidos lista;
+	ListaPedidos listaPedidos;
+	String nomeGarcon;
 	int id;
-	String nome;
 
 	public Garcon(ListaPedidos lista, String nome) {
-		this.lista = lista;
-		this.nome = nome;
+		this.listaPedidos = lista;
+		this.nomeGarcon = nome;
 	}
 
-	public void pegandoLista() {
-		lista.pegarLista();
+	public void lockListaGarcon() throws InterruptedException {
+		listaPedidos.lockLista();
 	}
 
-	public void soltandoLista() {
-		lista.soltarLista();
+	public void unlockListaGarcon() {
+		listaPedidos.unlockLista();
 	}
 
 	@Override
 	public void run() {
 		try {
 			while (true) {
-				pegandoLista();
-				Thread.sleep(1000);
+				lockListaGarcon();
 
-				if (lista.listaCheia()) {
-					soltandoLista();
-					System.out.println("Lista de pedidos cheia. Aguardando: " + lista);
+				if (listaPedidos.listaCheia()) {
+					unlockListaGarcon();
+					System.out.println("Lista de pedidos cheia. Aguardando: " + listaPedidos);
 				} else {
 					Pedido pedido = new Pedido();
 
-					lista.adicionarPedidoNaLista(pedido);
-					System.out.println(">[GARCON] " + this.nome + " anotando pedido: " + pedido.getId() + ", prato: "
-							+ pedido.getPrato());
+					listaPedidos.adicionarPedidoLista(pedido);
+					System.out.println(">[GARCON] " + this.nomeGarcon + " anotando pedido: " + pedido.getId()
+							+ ", prato: " + pedido.getPrato());
 
 					Thread.sleep((long) ((Math.random() * 2) + 2) * 1000);
 
-					soltandoLista();
+					unlockListaGarcon();
 
-					System.out.println(">[GARCON] " + this.nome + " anotou pedido: " + pedido.getId() + ", prato: "
-							+ pedido.getPrato());
-					System.out.println(">[GARCON] Lista de pedidos: " + lista);
+					System.out.println(">[GARCON] " + this.nomeGarcon + " anotou pedido: " + pedido.getId()
+							+ ", prato: " + pedido.getPrato() + ". Lista de pedidos: " + listaPedidos);
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			soltandoLista();
+			unlockListaGarcon();
 		}
 	}
 }

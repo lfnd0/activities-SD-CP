@@ -23,15 +23,16 @@ public class ListaPedidos extends Thread {
 		return lista;
 	}
 
-	public void pegarLista() {
+	public void lockLista() throws InterruptedException {
 		aLock.lock();
+		Thread.sleep(1000);
 	}
 
-	public void soltarLista() {
+	public void unlockLista() {
 		aLock.unlock();
 	}
 
-	public boolean adicionarPedidoNaLista(Pedido pedido) {
+	public boolean adicionarPedidoLista(Pedido pedido) {
 		if (lista.size() < 5) {
 			this.lista.add(pedido);
 			return true;
@@ -39,7 +40,7 @@ public class ListaPedidos extends Thread {
 		return false;
 	}
 
-	public boolean removerPedidoDaLista() {
+	public boolean removerPedidoLista() {
 		if (!listaVazia()) {
 			this.lista.remove(0);
 			return true;
