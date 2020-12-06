@@ -9,7 +9,7 @@ public class Cliente {
 		String resultado = "";
 
 		try {
-			CalculadoraIMCIF calculadoraIMCIF = (CalculadoraIMCIF) Naming.lookup("127.0.0.1/calculadoraIMC");
+			CalculadoraIMCIF calculadoraIMCIF = (CalculadoraIMCIF) Naming.lookup("//127.0.0.1/calculadoraIMC");
 			
 			altura = Double.parseDouble(JOptionPane.showInputDialog("Informe sua altura (em metros):"));
 			peso = Double.parseDouble(JOptionPane.showInputDialog("Informe seu peso:"));
