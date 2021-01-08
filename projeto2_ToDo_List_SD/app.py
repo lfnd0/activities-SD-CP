@@ -41,15 +41,6 @@ def add_task():
 
 
 @app.route("/tarefas/<int:task_id>", methods=["PUT"])
-def update_task_description(task_id):
-    task_found = [task for task in tasks if task["id"] == task_id]
-    if(len(task_found)):
-        task_found[0]["descricao"] = request.json["descricao"]
-        return jsonify({"Mensagem": "Descricao da tarefa atualizada", "Tarefa": task_found[0]})
-    return jsonify({"Mensagem": "Tarefa nao encontrada"})
-
-
-@app.route("/tarefas/<int:task_id>", methods=["PUT"])
 def update_task_status(task_id):
     task_found = [task for task in tasks if task["id"] == task_id]
     if(len(task_found)):
