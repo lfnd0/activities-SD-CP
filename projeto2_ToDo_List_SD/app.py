@@ -10,7 +10,7 @@ def home():
 
 
 @app.route("/tarefas")
-def get_tasks():
+def get_tasks_list():
     return jsonify({"Mensagem": "Minha lista de tarefas", "Tarefas": tasks})
 
 
