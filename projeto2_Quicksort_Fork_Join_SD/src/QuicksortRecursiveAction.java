@@ -1,5 +1,3 @@
-package br.edu.algoritmo.ordenacao;
-
 import java.util.concurrent.RecursiveAction;
 
 public class QuicksortRecursiveAction extends RecursiveAction {
