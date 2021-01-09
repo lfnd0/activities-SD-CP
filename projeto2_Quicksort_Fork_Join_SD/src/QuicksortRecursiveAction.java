@@ -4,53 +4,53 @@ public class QuicksortRecursiveAction extends RecursiveAction {
 
 	private static final long serialVersionUID = 1L;
 
-	private int[] data;
-	private int left;
-	private int right;
+	private int[] lista;
+	private int limiteEsquerdo;
+	private int limiteDireito;
 
-	public QuicksortRecursiveAction(int[] data) {
-		this.data = data;
-		left = 0;
-		right = data.length - 1;
+	public QuicksortRecursiveAction(int[] lista) {
+		this.lista = lista;
+		limiteEsquerdo = 0;
+		limiteDireito = lista.length - 1;
 	}
 
-	public QuicksortRecursiveAction(int[] data, int left, int right) {
-		this.data = data;
-		this.left = left;
-		this.right = right;
+	public QuicksortRecursiveAction(int[] lista, int limiteEsquerdo, int limiteDireito) {
+		this.lista = lista;
+		this.limiteEsquerdo = limiteEsquerdo;
+		this.limiteDireito = limiteDireito;
 	}
 
-	private int partition(int[] array, int low, int high) {
-		int pivot = array[low];
-		int i = low - 1;
-		int j = high + 1;
+	private int particao(int[] lista, int limiteMenor, int limiteMaior) {
+		int pivo = lista[limiteMenor];
+		int i = limiteMenor - 1;
+		int j = limiteMaior + 1;
 
 		while (true) {
 			do {
 				i++;
-			} while (array[i] < pivot);
+			} while (lista[i] < pivo);
 
 			do {
 				j--;
-			} while (array[j] > pivot);
+			} while (lista[j] > pivo);
 			if (i >= j)
 				return j;
-			swap(array, i, j);
+			swap(lista, i, j);
 		}
 	}
 
-	private void swap(int[] array, int i, int j) {
-		int temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
+	private void swap(int[] lista, int i, int j) {
+		int temp = lista[i];
+		lista[i] = lista[j];
+		lista[j] = temp;
 	}
 
 	@Override
 	protected void compute() {
-		if (left < right) {
-			int pivot = partition(data, left, right);
-			invokeAll(new QuicksortRecursiveAction(data, left, pivot),
-					new QuicksortRecursiveAction(data, pivot + 1, right));
+		if (limiteEsquerdo < limiteDireito) {
+			int pivo = particao(lista, limiteEsquerdo, limiteDireito);
+			invokeAll(new QuicksortRecursiveAction(lista, limiteEsquerdo, pivo),
+					new QuicksortRecursiveAction(lista, pivo + 1, limiteDireito));
 		}
 	}
 }

@@ -10,7 +10,7 @@ public class Main {
 		int[] lista = IntStream.generate(() -> new Random().nextInt(100000)).limit(100000).toArray();
 		System.out.println("Lista desordenada = " + Arrays.toString(lista));
 
-		long tempoInicial = System.currentTimeMillis();
+		long tempoDeExecucao = System.currentTimeMillis();
 		QuicksortRecursiveAction quicksort = new QuicksortRecursiveAction(lista);
 
 		ForkJoinPool pool = new ForkJoinPool();
@@ -21,7 +21,7 @@ public class Main {
 		System.out.println("Lista ordenada = " + Arrays.toString(lista));
 
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-			System.out.println("Tempo de execução = " + (System.currentTimeMillis() - tempoInicial) + "ms");
+			System.out.println("Tempo de execucao = " + (System.currentTimeMillis() - tempoDeExecucao) + "ms");
 		}));
 	}
 }
