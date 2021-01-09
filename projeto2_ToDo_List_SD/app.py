@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return jsonify({"Mensagem": "Bem vindo(a) ao ToDo List API!"})
+    return jsonify({"Mensagem": "Bem vindo(a) ao ToDo List!"})
 
 
 @app.route("/tarefas")
