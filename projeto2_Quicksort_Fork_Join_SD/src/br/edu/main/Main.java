@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
 
-import br.edu.algoritmo.QuicksortRecursiveAction;
+import br.edu.algoritmo.ordenacao.QuicksortRecursiveAction;
 
 public class Main {
 

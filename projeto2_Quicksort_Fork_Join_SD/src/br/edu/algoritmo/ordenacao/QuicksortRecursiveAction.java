@@ -1,4 +1,4 @@
-package br.edu.algoritmo;
+package br.edu.algoritmo.ordenacao;
 
 import java.util.concurrent.RecursiveAction;
 
